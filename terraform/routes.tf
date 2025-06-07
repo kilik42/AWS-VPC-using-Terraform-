@@ -20,9 +20,15 @@ resource "aws_route_table" "public"{
         nat_gateway_id = aws_internet_gateway.nat.id
 
     }
-    
+
     tags={
        Name = "${locals.env}-private" 
     }
 
+}
+
+
+resource "aws_route_table_association" "private_zone1" {
+  subnet_id      = aws_subnet.foo.id
+  route_table_id = aws_route_table.bar.id
 }
