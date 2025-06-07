@@ -36,4 +36,28 @@ resource "aws_subnet" "public_zone1"{
      availability_zone = locals.zone1
     map_public_ip_on_launch = true
 
+    tags ={
+         Name = "${locals.env}-private-${locals.zone1}"
+         "kubernetes.io/role/elb" = "1"
+          "kubernetes.io/cluster/${locals.env}-${locals.eks_name}" ="owned"
+    }
+
+
+
+}
+
+resource "aws_subnet" "public_zone2"{
+    vpc_id                 = aws_subnet.main.id
+    cidr_block = "10.0.96.0/19"
+     availability_zone = locals.zone2
+    map_public_ip_on_launch = true
+
+    tags ={
+         Name = "${locals.env}-private-${locals.zone2}"
+         "kubernetes.io/role/elb" = "1"
+          "kubernetes.io/cluster/${locals.env}-${locals.eks_name}" ="owned"
+    }
+
+
+
 }
