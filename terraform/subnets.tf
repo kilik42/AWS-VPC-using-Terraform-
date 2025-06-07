@@ -18,3 +18,5 @@ resource "aws_subnet" "private_zone2" {
   }
 }
 
+
+
