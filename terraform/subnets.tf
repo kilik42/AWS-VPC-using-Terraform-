@@ -5,7 +5,10 @@ resource "aws_subnet" "private_zone1" {
 
   tags = {
      Name = "${locals.env}-private-${locals.zone1}"
+     "kubernetes.io/role/internal-elb" = "1"
+     "kubernetes.io/cluster/${locals.env}-${locals.eks_name}" ="owned"
  }
+
 }
 
 
