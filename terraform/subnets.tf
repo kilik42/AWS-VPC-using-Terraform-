@@ -4,7 +4,7 @@ resource "aws_subnet" "private_zone1" {
   availability_zone = locals.zone1
 
   tags = {
-     Name = "${local.env}-private-${local.zone1}"
+     Name = "${locals.env}-private-${locals.zone1}"
  }
 }
 
@@ -14,7 +14,7 @@ resource "aws_subnet" "private_zone2" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    Name = "${local.env}-private-${loacl}"
+    Name = "${locals.env}-private-${locals.zone2}"
   }
 }
 
